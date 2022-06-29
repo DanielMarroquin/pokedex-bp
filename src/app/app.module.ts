@@ -13,6 +13,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {MatInputModule} from "@angular/material/input";
 import {MatTableModule} from "@angular/material/table";
 import {AdminPokedexModule} from "./views/admin-pokedex/admin-pokedex.module";
+import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 
 
 
@@ -32,6 +33,7 @@ import {AdminPokedexModule} from "./views/admin-pokedex/admin-pokedex.module";
     HttpClientModule,
     MatInputModule,
     MatTableModule,
+    NgxDatatableModule,
   ],
 
   providers: [],

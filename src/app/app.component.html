@@ -9,9 +9,9 @@
   </button>
 </mat-toolbar>
 <section class="content">
-  <mat-card>
+  <mat-card class="border-apply border-5 margin-0 padding-0 mt-4">
     <mat-card-content>
-      <div class="col">
+      <div class="col-md-10 mg-5">
         <div class="col-lg-10 ">
           <div class="col-md-3 ">
             <label for="exampleFormControlInput1" class="form-label">Listado de Pokemon</label>
@@ -21,6 +21,24 @@
         </div>
       </div>
     </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <div class="col-auto p-3 d-flex justify-content-center">
+      <ngx-datatable
+        #tables
+        class="material"
+        [columns]="columns"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        rowHeight="auto"
+        [rows]="tables.rows"
+        [count]="tablePage.totalElements"
+        [offset]="tablePage.pageNumber"
+        [limit]="tablePage.size"
+        (page)="loadTableData($event)"
+      >
+      </ngx-datatable>
+    </div>
   </mat-card>
 </section>
 <router-outlet></router-outlet>
