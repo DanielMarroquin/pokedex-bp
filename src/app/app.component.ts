@@ -3,20 +3,14 @@ import {PokemonService} from "./services/pokemon.service";
 import { MatTableDataSource } from '@angular/material/table';
 
 import {DatatableComponent} from "@swimlane/ngx-datatable";
+import {map} from "rxjs";
 
 export interface PokemonTable {
   name: string;
-  image: string;
   attack: number;
   defense: number;
 }
 
-export class Page {
-  size: number = 0;
-  totalElements: number = 0;
-  totalPages: number = 0;
-  pageNumber: number = 0;
-}
 
 
 @Component({
@@ -27,13 +21,15 @@ export class Page {
 export class AppComponent {
   // @ts-ignore
   @ViewChild(DatatableComponent) table: DatatableComponent;
+
+
   public pokemons: PokemonTable[] = [];
   dataSource:any;
-  ColumnMode: any;
+  ColumnMode: any ;
   rows = [];
   temp = [];
+  list: any;
 
-  tablePage = new Page();
   columns = [
     { name: 'Name', prop: 'name' },
     { name: 'Imagen', prop: 'image' },
@@ -49,21 +45,16 @@ export class AppComponent {
       { name: 'Defensa', prop: 'defense' }
     ],
     rows: new Array<PokemonTable>(),
-    isLoading: false,
   };
 
 
   constructor(
     private pokemonService: PokemonService
-
   ) {
-    this.tablePage.pageNumber = 0;
-    this.tablePage.size = 10;
   }
 
   ngOnInit(): void {
     this.loadTableData();
-    this.dataSource = new MatTableDataSource(this.pokemons);
     this.pokemonService.getListPokemon(1)
       .subscribe( pokemon => {
       this.pokemons = pokemon;
@@ -72,16 +63,13 @@ export class AppComponent {
     });
   }
 
-  loadTableData(pageInfo: any = { offset: 0 }) {
-    this.tablePage.pageNumber = pageInfo.offset;
+  loadTableData() {
     this.pokemonService.getListPokemon(
       1
     ).subscribe({
       next: (data) => {
-        this.tablePage.totalElements = data.count;
-        this.table.rows = data.rows;
-        console.log(data, 'data')
-        console.log(this.tables.rows, 'rows')
+        this.temp = data;
+        this.rows = data;
       },
       error: (err) => {
         console.log(err)
@@ -90,13 +78,8 @@ export class AppComponent {
   }
 
   filter(event: Event) {
-    const filters = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filters.trim().toLowerCase();
-    console.log(filters , 'filters')
+
   }
-
-
-
 
 
 }

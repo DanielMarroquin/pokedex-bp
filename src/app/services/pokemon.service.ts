@@ -10,12 +10,10 @@ export class PokemonService {
   constructor(
     private http: HttpClient) { }
 
-  // @ts-ignore
   getListPokemon(id: number): Observable<any>{
     const params = {
       idAuthor: id
     }
-    // https://bp-pokemons.herokuapp.com/:id
     return this.http.get<any>(environment.api, { params } )
   }
 
