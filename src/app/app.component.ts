@@ -3,7 +3,6 @@ import {PokemonService} from "./services/pokemon.service";
 import { MatTableDataSource } from '@angular/material/table';
 
 import {DatatableComponent} from "@swimlane/ngx-datatable";
-import {map} from "rxjs";
 
 export interface PokemonTable {
   name: string;
@@ -39,7 +38,7 @@ export class AppComponent {
 
   tables: any = {
     column: [
-      { name: 'Name', prop: 'name' },
+      { name: 'Names', prop: 'name' },
       { name: 'Imagen', prop: 'image' },
       { name: 'Ataque', prop: 'attack' },
       { name: 'Defensa', prop: 'defense' }
@@ -79,6 +78,14 @@ export class AppComponent {
 
   filter(event: Event) {
 
+  }
+
+  editPokemon(row: any){
+    console.log(row)
+  }
+
+  deletePokemon(row: any){
+    console.log(row)
   }
 
 

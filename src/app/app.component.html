@@ -28,35 +28,50 @@
       <mat-card-content>
         <ngx-datatable
           style="width: 100%"
-          class="material"
           [columns]="columns"
-          [columnMode]="ColumnMode"
-          [headerHeight]="50"
-          [footerHeight]="50"
+          [columnMode]="'standard'"
+          [headerHeight]="70"
+          [footerHeight]="70"
           rowHeight="auto"
           [limit]="10"
           [rows]="rows"
+          class="material"
           (page)="loadTableData()">
+          <ngx-datatable-column name="Actions">
+            <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+              <button mat-icon-button color="accent" title="Editar" (click)="editPokemon(row)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button class="text-success" title="Eliminar" (click)="deletePokemon(row)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Name" prop="name" >
+
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Image" prop="image" >
+            <ng-template #editTmpl let-row="row" let-value="value">
+              <img *ngIf="value === 'male'" width="150" src="https://media.giphy.com/media/I8nepxWwlEuqI/giphy.gif" />
+              <img *ngIf="value === 'female'" width="150" src="https://media.giphy.com/media/sxSVG3XHf7yww/giphy.gif" />
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Attack" prop="attack" >
+
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Defense" prop="defense" >
+
+          </ngx-datatable-column>
+
         </ngx-datatable>
-        <ngx-datatable-column>
-          <ng-template #btnAction let-row="row">
-            <button mat-icon-button color="accent" title="Editar">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-icon-button class="text-success" title="Eliminar">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </ng-template>
-        </ngx-datatable-column>
-        <ng-template #editTmpl let-row="row" let-value="value">
-          <img *ngIf="value === 'male'" width="150" src="https://media.giphy.com/media/I8nepxWwlEuqI/giphy.gif"/>
-          <img *ngIf="value === 'female'" width="150" src="https://media.giphy.com/media/sxSVG3XHf7yww/giphy.gif"/>
-        </ng-template>
       </mat-card-content>
     </div>
   </mat-card>
 </section>
 <router-outlet></router-outlet>
+
+
+
 
 
 
