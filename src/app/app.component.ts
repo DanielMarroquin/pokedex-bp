@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {PokemonService} from "./services/pokemon.service";
 import { MatTableDataSource } from '@angular/material/table';
+import { rolesModelForm } from "./core/models/pokemonForm"
 
 import {DatatableComponent} from "@swimlane/ngx-datatable";
 
