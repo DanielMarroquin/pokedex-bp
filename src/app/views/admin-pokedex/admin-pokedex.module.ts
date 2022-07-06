@@ -8,11 +8,13 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatDividerModule} from "@angular/material/divider";
 import {AppModule} from "../../app.module";
+import { FormModalPokemonComponent } from './components/component/form-modal-pokemon.component'
 
 
 @NgModule({
   declarations: [
-    PokemonComponent
+    PokemonComponent,
+    FormModalPokemonComponent
   ],
   imports: [
     CommonModule,

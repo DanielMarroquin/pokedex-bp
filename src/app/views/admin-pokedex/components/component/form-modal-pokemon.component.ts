@@ -18,10 +18,8 @@ import { PokemonForm, editModelForm } from "../../../../core/models/pokemonForm"
       </button>
     </div>
     <div class="modal-body">
-      <app-dynamic-form #formComponent [config]="formModel"></app-dynamic-form>
     </div>
     <div class="modal-footer">
-      <app-load-button [isLoad]="isSaving" (onClickButton)="save()" ></app-load-button>
       <button type="button" class="btn btn-secondary mx-2">Cancelar</button>
     </div>
   `,

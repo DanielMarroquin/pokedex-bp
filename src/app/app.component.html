@@ -4,7 +4,7 @@
   </button>
   <span>Pokedex</span>
   <span class="example-spacer"></span>
-  <button mat-raised-button color="warn">
+  <button mat-raised-button color="warn" (click)="addNew()">
     <mat-icon>add</mat-icon>
     Nuevo Pokemon
   </button>
@@ -51,9 +51,8 @@
 
           </ngx-datatable-column>
           <ngx-datatable-column name="Image" prop="image" >
-            <ng-template #editTmpl let-row="row" let-value="value">
-              <img *ngIf="value === 'male'" width="150" src="https://media.giphy.com/media/I8nepxWwlEuqI/giphy.gif" />
-              <img *ngIf="value === 'female'" width="150" src="https://media.giphy.com/media/sxSVG3XHf7yww/giphy.gif" />
+            <ng-template #editTmpl let-row="row" let-value="value" ngx-datatable-cell-template>
+              <img alt="test" *ngIf="value === 'image'" width="150" src="image.prop" />
             </ng-template>
           </ngx-datatable-column>
           <ngx-datatable-column name="Attack" prop="attack" >

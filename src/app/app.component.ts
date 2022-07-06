@@ -1,9 +1,8 @@
 import {Component, ViewChild} from '@angular/core';
 import {PokemonService} from "./services/pokemon.service";
-import { MatTableDataSource } from '@angular/material/table';
-import { rolesModelForm } from "./core/models/pokemonForm"
-
 import {DatatableComponent} from "@swimlane/ngx-datatable";
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormModalPokemonComponent } from "./views/admin-pokedex/components/component/form-modal-pokemon.component";
 
 export interface PokemonTable {
   name: string;
@@ -49,7 +48,9 @@ export class AppComponent {
 
 
   constructor(
-    private pokemonService: PokemonService
+    private pokemonService: PokemonService,
+    private modalService: NgbModal
+
   ) {
   }
 
@@ -75,6 +76,20 @@ export class AppComponent {
         console.log(err)
       }
     });
+  }
+
+  addNew () {
+    const componentRef = this.modalService.open(FormModalPokemonComponent, {
+      ariaLabelledBy: 'modal-basic-title',
+      size: 'lg',
+      centered: true,
+    });
+    componentRef.closed.subscribe(reason => {
+      if (reason == 'success') {
+        this.loadTableData();
+      }
+    });
+
   }
 
   filter(event: Event) {
