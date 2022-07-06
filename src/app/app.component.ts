@@ -2,6 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {PokemonService} from "./services/pokemon.service";
 import {DatatableComponent} from "@swimlane/ngx-datatable";
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 import { FormModalPokemonComponent } from "./views/admin-pokedex/components/component/form-modal-pokemon.component";
 
 export interface PokemonTable {

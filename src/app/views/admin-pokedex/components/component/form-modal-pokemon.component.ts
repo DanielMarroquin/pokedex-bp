@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PokemonForm, editModelForm } from "../../../../core/models/pokemonForm";
 
