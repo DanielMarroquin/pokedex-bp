@@ -34,18 +34,23 @@ export class AppComponent {
     { name: 'Name', prop: 'name' },
     { name: 'Imagen', prop: 'image' },
     { name: 'Ataque', prop: 'attack' },
-    { name: 'Defensa', prop: 'defense' }
+    { name: 'Defensa', prop: 'defense' },
+
   ];
 
-  tables: any = {
-    column: [
-      { name: 'Names', prop: 'name' },
-      { name: 'Imagen', prop: 'image' },
-      { name: 'Ataque', prop: 'attack' },
-      { name: 'Defensa', prop: 'defense' }
-    ],
-    rows: new Array<PokemonTable>(),
+  filter = {
+    name: null
   };
+
+  // tables: any = {
+  //   column: [
+  //     { name: 'Names', prop: 'name' },
+  //     { name: 'Imagen', prop: 'image' },
+  //     { name: 'Ataque', prop: 'attack' },
+  //     { name: 'Defensa', prop: 'defense' }
+  //   ],
+  //   rows: new Array<PokemonTable>()
+  // };
 
 
   constructor(
@@ -72,6 +77,7 @@ export class AppComponent {
       next: (data) => {
         this.temp = data;
         this.rows = data;
+        console.log(this.rows, 'rows')
       },
       error: (err) => {
         console.log(err)
@@ -93,7 +99,12 @@ export class AppComponent {
 
   }
 
-  filter(event: Event) {
+  setFilter(inputSearch: any) {
+    const {value} = inputSearch.target;
+    this.searchFilters(value.toLowerCase().trim());
+  }
+
+  searchFilters(value: any) {
 
   }
 

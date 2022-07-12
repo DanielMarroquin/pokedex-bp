@@ -16,7 +16,8 @@
         <div class="col-lg-10 ">
           <div class="col-md-3 ">
             <label for="exampleFormControlInput1" class="form-label">Listado de Pokemon</label>
-            <input type="text" class="form-control" matInput (keyup)="filter($event)" id="exampleFormControlInput1"
+            <input type="text" class="form-control" matInput (keyup)="setFilter($event)" #input
+                   id="exampleFormControlInput1"
                    placeholder="Busca por nombre">
           </div>
         </div>
@@ -30,13 +31,12 @@
           style="width: 100%"
           [columns]="columns"
           [columnMode]="'standard'"
-          [headerHeight]="70"
-          [footerHeight]="70"
+          [headerHeight]="50"
+          [footerHeight]="50"
           rowHeight="auto"
           [limit]="10"
           [rows]="rows"
-          class="material"
-          (page)="loadTableData()">
+          class="material">
           <ngx-datatable-column name="Actions">
             <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
               <button mat-icon-button color="accent" title="Editar" (click)="editPokemon(row)">
@@ -47,21 +47,20 @@
               </button>
             </ng-template>
           </ngx-datatable-column>
-          <ngx-datatable-column name="Name" prop="name" >
+          <ngx-datatable-column name="Name" prop="name">
 
           </ngx-datatable-column>
-          <ngx-datatable-column name="Image" prop="image" >
-            <ng-template #editTmpl let-row="row" let-value="value" ngx-datatable-cell-template>
-              <img alt="test" *ngIf="value === 'image'" width="150" src="image.prop" />
+          <ngx-datatable-column name="Image" prop="image">
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+              <img alt="test" *ngIf="value === 'image'" width="150" src="image.prop"/>
             </ng-template>
           </ngx-datatable-column>
-          <ngx-datatable-column name="Attack" prop="attack" >
+          <ngx-datatable-column name="Attack" prop="attack">
 
           </ngx-datatable-column>
-          <ngx-datatable-column name="Defense" prop="defense" >
+          <ngx-datatable-column name="Defense" prop="defense">
 
           </ngx-datatable-column>
-
         </ngx-datatable>
       </mat-card-content>
     </div>

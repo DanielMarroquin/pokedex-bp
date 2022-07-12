@@ -1,27 +1,15 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { PokemonForm, editModelForm } from "../../../../core/models/pokemonForm";
+import { PokemonForm, PokemonModelForm } from "../../../../core/models/pokemonForm";
+import { MatTableDataSource } from "@angular/material/table";
 
 
 @Component({
-  selector: 'app-form-modal-role',
+  selector: 'modal',
   template: `
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-title">{{action}} Rol</h4>
-      <button
-        type="button"
-        class="close"
-        aria-label="Close button"
-        aria-describedby="modal-title"
-      >
-        <span aria-hidden="true">x</span>
-      </button>
-    </div>
-    <div class="modal-body">
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary mx-2">Cancelar</button>
-    </div>
+    <ng-container>
+      <button>Close Dialog</button>
+    </ng-container>
   `,
   providers: [ MatSnackBar ]
 
@@ -29,8 +17,10 @@ import { PokemonForm, editModelForm } from "../../../../core/models/pokemonForm"
 
 
 export class FormModalPokemonComponent implements OnInit {
+  data: any[] = [];
+  dataSource = new MatTableDataSource<any>(this.data);
   @Input () form: PokemonForm  | undefined;
-  formModel: any  = editModelForm();
+  formModel: any  = PokemonModelForm();
   isSaving = false;
   action = 'Nuevo'
   permissions: any = [];

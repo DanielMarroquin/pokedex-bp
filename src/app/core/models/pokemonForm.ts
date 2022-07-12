@@ -13,7 +13,7 @@ export interface PokemonForm {
   code?:string;
 }
 
-export function rolesModelForm(data?: PokemonForm) {
+export function PokemonModelForm(data?: PokemonForm) {
   const {name, adminPermission, managementPermission} = data || {name: null, adminPermission: null, managementPermission: null};
   return {
     type: 'horizontal',
@@ -74,35 +74,6 @@ export function rolesModelForm(data?: PokemonForm) {
   };
 }
 
-export function editModelForm(data?: PokemonForm) {
-  return {
-    type: 'rows',
-    inputs: [
-      {
-        row: 1,
-        type: 'input',
-        label: 'Nombre',
-        name: 'name',
-        required: true, value: data ? data.name : null,
-        validation: [Validators.required]
-      },
-      {
-        row: 2,
-        type: 'select-multiple', label: 'Permisos', name: 'permissions',
-        inputConfig: {
-          multiple: true,
-          addTag: false,
-          closeOnSelect: false
-        },
-        options: [],
-        required: true,
-        validation: [Validators.required],
-        value: data ? data.permissions : null
-      }
-
-    ]
-  };
-}
 
 
 
