@@ -25,6 +25,7 @@
     </mat-card-content>
   </mat-card>
   <mat-card>
+
     <div class="col-auto p-3 d-flex justify-content-center">
       <mat-card-content>
         <ngx-datatable
@@ -50,14 +51,18 @@
           <ngx-datatable-column name="Name" prop="name">
 
           </ngx-datatable-column>
-          <ngx-datatable-column name="Image" prop="image">
-            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-              <img alt="test" *ngIf="value === 'image'" width="150" src="image.prop"/>
+          <ngx-datatable-column name="Image">
+            <ng-template mat-cell *matCellDef="let element">
+              <img alt="test" width="100" height="100" src="{{element.image}}"/>
             </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Type" prop="type">
+
           </ngx-datatable-column>
           <ngx-datatable-column name="Attack" prop="attack">
 
           </ngx-datatable-column>
+
           <ngx-datatable-column name="Defense" prop="defense">
 
           </ngx-datatable-column>

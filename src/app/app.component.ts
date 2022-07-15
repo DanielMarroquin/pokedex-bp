@@ -4,6 +4,7 @@ import {DatatableComponent} from "@swimlane/ngx-datatable";
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { FormModalPokemonComponent } from "./views/admin-pokedex/components/component/form-modal-pokemon.component";
+import { MatTableDataSource } from "@angular/material/table";
 
 export interface PokemonTable {
   name: string;
@@ -19,12 +20,14 @@ export interface PokemonTable {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  data: any[] = [];
+  dataSource = new MatTableDataSource<any>(this.data);
   // @ts-ignore
   @ViewChild(DatatableComponent) table: DatatableComponent;
 
 
   public pokemons: PokemonTable[] = [];
-  dataSource:any;
+  // dataSource:any;
   ColumnMode: any ;
   rows = [];
   temp = [];
